@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito y pago | Mercado Verde</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="">
+  <header class="cabecera">
+    <nav aria-label="Menú principal">
+      <a class="logo" href="index.html">🛒 Mercado Verde</a>
+      <ul class="menu">
+        <li><a href="index.html" >Inicio</a></li>
+        <li><a href="productos.html" >Productos</a></li>
+        <li><a href="carrito.html" aria-current="page">Carrito</a></li>
+        <li><a href="contacto.html" >Contacto</a></li>
+        <li><a href="login.html" >Ingresar</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Tu carrito</h1>
+
+    <section aria-label="Productos en el carrito">
+      <section class="tabla-scroll">
+        <table class="tabla-carrito">
+          <caption class="sr-only" hidden>Productos agregados al carrito</caption>
+          <thead>
+            <tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="producto-mini"><img src="manzanas.svg" alt="" width="56" height="42">Manzanas rojas 1 lb</span></td>
+              <td>$1.20</td><td>2</td><td>$2.40</td>
+            </tr>
+            <tr>
+              <td><span class="producto-mini"><img src="leche.svg" alt="" width="56" height="42">Leche entera 1 L</span></td>
+              <td>$1.05</td><td>3</td><td>$3.15</td>
+            </tr>
+            <tr>
+              <td><span class="producto-mini"><img src="pan.svg" alt="" width="56" height="42">Pan francés (6 u.)</span></td>
+              <td>$0.90</td><td>1</td><td>$0.90</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="3">Total a pagar</td><td>$6.45</td></tr>
+          </tfoot>
+        </table>
+      </section>
+    </section>
+
+    <section class="pago">
+      <aside>
+        <h2>Resumen</h2>
+        <p>Revisa tus productos antes de pagar. El pago es una simulación: no se realiza ningún cobro real.</p>
+      </aside>
+
+      <form class="formulario" action="#" method="post">
+        <h2>Pago con tarjeta</h2>
+
+        <label>Nombre del titular
+          <input type="text" name="titular" placeholder="Como aparece en la tarjeta" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,}" required>
+        </label>
+
+        <label>Número de tarjeta
+          <input type="text" name="tarjeta" inputmode="numeric" placeholder="1234 5678 9012 3456"
+                 pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" maxlength="19"
+                 title="16 dígitos separados por espacios: 1234 5678 9012 3456" required>
+        </label>
+
+        <section class="fila-doble">
+          <label>Vencimiento
+            <input type="text" name="vencimiento" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+                   maxlength="5" title="Formato MM/AA, por ejemplo 08/28" required>
+          </label>
+          <label>CVV
+            <input type="password" name="cvv" inputmode="numeric" placeholder="123"
+                   pattern="[0-9]{3,4}" maxlength="4" title="3 o 4 dígitos" required>
+          </label>
+        </section>
+
+        <label>Correo para el recibo
+          <input type="email" name="correo" placeholder="correo@ejemplo.com" required>
+        </label>
+
+        <button class="boton" type="submit">Pagar $6.45</button>
+      </form>
+    </section>
+  </main>
+  <footer class="pie">
+    <p>&copy; 2026 Mercado Verde. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

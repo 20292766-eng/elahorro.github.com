@@ -1,0 +1,321 @@
+/* =====================================================
+   MERCADO VERDE - Hoja de estilos principal
+   Estructura:
+   1. Variables   2. Reset/base   3. Header y nav
+   4. Hero        5. Productos    6. Carrito
+   7. Formularios 8. Footer       9. Responsive
+   ===================================================== */
+
+/* ---------- 1. VARIABLES ---------- */
+:root {
+  --verde: #2f6b3a;
+  --verde-oscuro: #1f4a28;
+  --verde-claro: #e4f1e2;
+  --rojo-oferta: #d6402b;
+  --amarillo: #f4c430;
+  --tinta: #1d2a20;
+  --gris: #5f6b62;
+  --fondo: #f7f9f5;
+  --blanco: #ffffff;
+  --radio: 12px;
+  --sombra: 0 2px 8px rgba(0, 0, 0, .08);
+  --sombra-alta: 0 10px 24px rgba(0, 0, 0, .15);
+  --transicion: .3s ease;
+  --ancho-max: 1100px;
+}
+
+/* ---------- 2. RESET Y BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  color: var(--tinta);
+  background: var(--fondo);
+  line-height: 1.5;
+}
+
+img { max-width: 100%; display: block; }
+
+main, header > nav, .contenedor {
+  width: min(100% - 2rem, var(--ancho-max));
+  margin-inline: auto;
+}
+
+main { padding-block: 2rem; }
+
+h1, h2, h3 { line-height: 1.2; }
+
+a { color: var(--verde); transition: color var(--transicion); }
+a:hover { color: var(--rojo-oferta); }
+
+/* ---------- 3. HEADER Y NAVEGACIÓN ---------- */
+.cabecera {
+  background: var(--verde);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--sombra);
+}
+
+.cabecera nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  padding-block: .8rem;
+}
+
+.logo {
+  color: var(--blanco);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+.logo:hover { color: var(--amarillo); }
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  display: block;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  color: var(--blanco);
+  text-decoration: none;
+  transition: background var(--transicion), color var(--transicion);
+}
+.menu a:hover,
+.menu a[aria-current="page"] {
+  background: var(--amarillo);
+  color: var(--tinta);
+}
+
+/* ---------- 4. HERO / SECCIONES ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  padding: 2rem;
+}
+.hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .5rem; }
+.hero img { border-radius: var(--radio); }
+
+.boton {
+  display: inline-block;
+  border: 0;
+  border-radius: var(--radio);
+  padding: .7rem 1.4rem;
+  background: var(--verde);
+  color: var(--blanco);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transicion), transform var(--transicion);
+}
+.boton:hover { background: var(--rojo-oferta); color: var(--blanco); transform: translateY(-2px); }
+
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-block: 2rem;
+}
+.beneficios article {
+  background: var(--blanco);
+  padding: 1.2rem;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+.beneficios article:hover { transform: translateY(-6px); box-shadow: var(--sombra-alta); }
+
+/* ---------- 5. PRODUCTOS ---------- */
+.rejilla-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+.tarjeta:hover { transform: translateY(-6px); box-shadow: var(--sombra-alta); }
+
+/* Contenedor de imagen: misma proporción en todas las tarjetas */
+.tarjeta figure { margin: 0; overflow: hidden; aspect-ratio: 4 / 3; }
+.tarjeta img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.tarjeta:hover img { transform: scale(1.12); }   /* zoom suave */
+
+.tarjeta-cuerpo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: .4rem;
+  padding: 1rem;
+}
+.tarjeta h3 { margin: 0; font-size: 1.05rem; }
+.tarjeta .categoria { color: var(--gris); font-size: .85rem; margin: 0; }
+
+.precios { display: flex; align-items: baseline; gap: .6rem; margin: auto 0 .5rem; }
+.precio-normal { font-size: 1.2rem; font-weight: 700; }
+.precio-anterior { color: var(--gris); text-decoration: line-through; }       /* precio tachado */
+.precio-oferta { color: var(--rojo-oferta); font-size: 1.3rem; font-weight: 800; text-decoration: none; }
+
+.etiqueta-oferta {
+  position: absolute;
+  top: .7rem;
+  left: .7rem;
+  z-index: 1;
+  background: var(--rojo-oferta);
+  color: var(--blanco);
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.btn-agregar {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: .6rem;
+  background: var(--verde);
+  color: var(--blanco);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transicion), transform var(--transicion);
+}
+.btn-agregar:hover { background: var(--amarillo); color: var(--tinta); }
+.btn-agregar:active { transform: scale(.97); }
+
+/* ---------- 6. CARRITO ---------- */
+.tabla-scroll { overflow-x: auto; }   /* evita desbordamiento en móvil */
+
+.tabla-carrito {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+.tabla-carrito th { background: var(--verde); color: var(--blanco); text-align: left; }
+.tabla-carrito th, .tabla-carrito td { padding: .8rem 1rem; }
+.tabla-carrito tbody tr { border-bottom: 1px solid #e3e8e1; transition: background var(--transicion); }
+.tabla-carrito tbody tr:hover { background: var(--verde-claro); }
+.tabla-carrito tfoot td { font-weight: 800; font-size: 1.1rem; }
+
+.producto-mini { display: flex; align-items: center; gap: .8rem; }
+.producto-mini img { width: 56px; height: 42px; object-fit: cover; border-radius: 6px; }
+
+.pago {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* ---------- 7. FORMULARIOS ---------- */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--blanco);
+  padding: 1.8rem;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+.formulario h2 { margin: 0; }
+
+.formulario label { display: flex; flex-direction: column; gap: .3rem; font-weight: 600; }
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+  padding: .7rem .8rem;
+  border: 2px solid #cfd8cd;
+  border-radius: 8px;
+  font: inherit;
+  background: var(--blanco);
+  transition: border-color var(--transicion), box-shadow var(--transicion), background var(--transicion);
+}
+
+/* Estado de foco: resalte sutil del campo activo */
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 4px rgba(47, 107, 58, .18);
+  background: #fbfef9;
+}
+/* Estado inválido solo después de escribir */
+.formulario input:not(:placeholder-shown):invalid { border-color: var(--rojo-oferta); }
+
+.fila-doble { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* Login centrado */
+.pagina-login main {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+}
+.pagina-login .formulario { width: min(100%, 420px); }
+
+/* ---------- 8. FOOTER ---------- */
+.pie {
+  margin-top: 2rem;
+  background: var(--verde-oscuro);
+  color: var(--blanco);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+/* ---------- 9. RESPONSIVE ---------- */
+/* Tablet */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .pago { grid-template-columns: 1fr; }
+}
+/* Móvil */
+@media (max-width: 600px) {
+  .cabecera nav { justify-content: center; }
+  .menu { justify-content: center; }
+  .fila-doble { grid-template-columns: 1fr; }
+  .hero { padding: 1.2rem; }
+  .formulario { padding: 1.2rem; }
+}
+/* Accesibilidad: respeta usuarios que reducen el movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
